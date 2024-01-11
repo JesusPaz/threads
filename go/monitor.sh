@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Defining the process to monitor
-LANGUAGE="python"
+LANGUAGE="go"
 PROCESS_PID=56750
 
 # Check if the process is running
