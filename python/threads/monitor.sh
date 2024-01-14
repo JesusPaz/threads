@@ -1,9 +1,13 @@
 #!/bin/bash
 
 # Defining the process to monitor
-LANGUAGE="python-threads"
-PROCESS_COUNT=$(grep "num_threads" threads.py | awk -F' = ' '{print $2}')
-PROCESS_PID=32323
+LANGUAGE="python3"
+FILE="threads"
+PROCESS_COUNT=$(grep "num_threads" async.py | awk -F' = ' '{print $2}')
+
+# Start the process in the background
+$LANGUAGE $FILE.py &
+PROCESS_PID=$!
 
 # Check if the process is running
 if [ -z "$PROCESS_PID" ]; then
@@ -15,7 +19,7 @@ fi
 TIMESTAMP=$(date "+%Y-%m-%d_%H-%M-%S")
 DIRECTORY="../../data/${LANGUAGE}"
 mkdir -p $DIRECTORY
-CSV_FILE="${DIRECTORY}/${LANGUAGE}_${PROCESS_COUNT}.csv"
+CSV_FILE="${DIRECTORY}/${LANGUAGE}-${FILE}_${PROCESS_COUNT}.csv"
 echo "Timestamp;CPU Usage (%);Mem Usage (MiB);Mem Usage (KiB);Virtual Mem (MiB);Virtual Mem (KiB);Threads;Page Faults" > $CSV_FILE
 SLEEP_INTERVAL=1
 
