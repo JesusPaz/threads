@@ -8,7 +8,7 @@ async def perform_simple_operation():
 
 
 async def main():
-    num_tasks = 1000000
+    num_tasks = 100000
     tasks = []
 
     for _ in range(num_tasks):
