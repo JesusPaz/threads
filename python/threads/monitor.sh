@@ -3,7 +3,7 @@
 # Defining the process to monitor
 LANGUAGE="python3"
 FILE="threads"
-PROCESS_COUNT=$(grep "num_threads" async.py | awk -F' = ' '{print $2}')
+PROCESS_COUNT=$(grep "num_threads" threads.py | awk -F' = ' '{print $2}')
 
 # Start the process in the background
 $LANGUAGE $FILE.py &
