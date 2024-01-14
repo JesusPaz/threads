@@ -9,7 +9,7 @@ def perform_simple_operation():
 
 
 def main():
-    num_threads = 1000000
+    num_threads = 100000
     threads = []
 
     for i in range(num_threads):
