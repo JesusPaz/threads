@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Collections.Generic;
 
-class Program
+class Threads
 {
     static void PerformSimpleOperation()
     {
@@ -15,7 +15,7 @@ class Program
 
     static void Main(string[] args)
     {
-        int numThreads = 1000000;
+        int numThreads = 1;
         List<Thread> threads = new List<Thread>();
 
         for (int i = 0; i < numThreads; i++)

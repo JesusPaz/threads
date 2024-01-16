@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-class Program
+class Async
 {
     static async Task PerformSimpleOperation()
     {
@@ -15,7 +15,7 @@ class Program
 
     static async Task Main(string[] args)
     {
-        int numTasks = 1000000;
+        int numTasks = 1;
         List<Task> tasks = new List<Task>();
 
         for (int i = 0; i < numTasks; i++)
