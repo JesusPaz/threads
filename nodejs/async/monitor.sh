@@ -4,7 +4,7 @@
 LANGUAGE="node"
 FILE="async"
 FILE_EXTENSION="js"
-PROCESS_COUNT=$(grep "numTasks" $FILE.$FILE_EXTENSION | awk -F' = ' '{print $2}' | tr -d ';')
+PROCESS_COUNT=$(grep -m 1 "numTasks" $FILE.$FILE_EXTENSION | awk -F' = ' '{print $2}' | tr -d ';')
 
 # Start the process in the background
 $LANGUAGE $FILE.$FILE_EXTENSION &
