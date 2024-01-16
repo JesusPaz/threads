@@ -6,7 +6,7 @@ async function performSimpleOperation() {
 }
 
 function main() {
-    const numTasks = 1000000;
+    const numTasks = 1;
 
     for (let i = 0; i < numTasks; i++) {
         performSimpleOperation();
