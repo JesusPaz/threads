@@ -1,8 +1,14 @@
 #!/bin/bash
 
 # Defining the process to monitor
-LANGUAGE="nodejs"
-PROCESS_PID=56750
+LANGUAGE="node"
+FILE="async"
+FILE_EXTENSION="js"
+PROCESS_COUNT=$(grep "numTasks" $FILE.$FILE_EXTENSION | awk -F' = ' '{print $2}')
+
+# Start the process in the background
+$LANGUAGE $FILE.$FILE_EXTENSION &
+PROCESS_PID=$!
 
 # Check if the process is running
 if [ -z "$PROCESS_PID" ]; then
@@ -12,7 +18,9 @@ fi
 
 # Preparing the CSV file
 TIMESTAMP=$(date "+%Y-%m-%d_%H-%M-%S")
-CSV_FILE="process_monitor_${LANGUAGE}_${TIMESTAMP}.csv"
+DIRECTORY="../../data/${LANGUAGE}"
+mkdir -p $DIRECTORY
+CSV_FILE="${DIRECTORY}/${LANGUAGE}-${FILE}_${PROCESS_COUNT}.csv"
 echo "Timestamp;CPU Usage (%);Mem Usage (MiB);Mem Usage (KiB);Virtual Mem (MiB);Virtual Mem (KiB);Threads;Page Faults" > $CSV_FILE
 SLEEP_INTERVAL=1
 
