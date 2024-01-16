@@ -15,7 +15,7 @@ class Async
 
     static async Task Main(string[] args)
     {
-        int numTasks = 1;
+        int numTasks = 1000000;
         List<Task> tasks = new List<Task>();
 
         for (int i = 0; i < numTasks; i++)

@@ -15,7 +15,7 @@ class Threads
 
     static void Main(string[] args)
     {
-        int numThreads = 1;
+        int numThreads = 100000;
         List<Thread> threads = new List<Thread>();
 
         for (int i = 0; i < numThreads; i++)
