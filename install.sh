@@ -29,6 +29,6 @@ export PATH=$PATH:$HOME/.cargo/bin # Update PATH to include Rust binaries
 echo 'export PATH=$PATH:$HOME/.cargo/bin' >> ~/.zshrc # Persist PATH update
 
 # Installing .NET (C#)
-wget https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb # Add .NET repository
-rm packages-microsoft-prod.deb # Remove .NET repository package
+# https://github.com/dotnet/core/issues/7699
+# https://github.com/dotnet/sdk/issues/27129#issuecomment-1214358108
+sudo apt install dotnet-sdk-8.0

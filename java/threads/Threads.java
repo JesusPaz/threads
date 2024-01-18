@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
-public class VirtualThreads {
+public class Threads {
 
     public static void performSimpleOperation() {
         while (true) {
