@@ -2,7 +2,14 @@
 
 # Defining the process to monitor
 LANGUAGE="go"
-PROCESS_PID=56750
+FILE="threads"
+FILE_EXTENSION="go"
+PROCESS_COUNT=$(grep -m 1 "numGoroutines" $FILE.$FILE_EXTENSION | awk -F' = ' '{print $2}' | tr -d ';')
+
+# Start the process in the background
+$LANGUAGE build
+$LANGUAGE run $FILE.$FILE_EXTENSION &
+PROCESS_PID=$!
 
 # Check if the process is running
 if [ -z "$PROCESS_PID" ]; then
@@ -12,7 +19,9 @@ fi
 
 # Preparing the CSV file
 TIMESTAMP=$(date "+%Y-%m-%d_%H-%M-%S")
-CSV_FILE="process_monitor_${LANGUAGE}_${TIMESTAMP}.csv"
+DIRECTORY="../../data/${LANGUAGE}"
+mkdir -p $DIRECTORY
+CSV_FILE="${DIRECTORY}/${LANGUAGE}-${FILE}_${PROCESS_COUNT}.csv"
 echo "Timestamp;CPU Usage (%);Mem Usage (MiB);Mem Usage (KiB);Virtual Mem (MiB);Virtual Mem (KiB);Threads;Page Faults" > $CSV_FILE
 SLEEP_INTERVAL=1
 
