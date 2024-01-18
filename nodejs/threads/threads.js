@@ -9,7 +9,7 @@ function startWorker(path, cb) {
     });
 }
 
-const numThreads = 1;
+const numThreads = 10000;
 for (let i = 0; i < numThreads; i++) {
     startWorker('./worker.js', (err, result) => {
         if (err) return console.error(err);
