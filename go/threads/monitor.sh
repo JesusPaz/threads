@@ -4,7 +4,7 @@
 LANGUAGE="go"
 FILE="threads"
 FILE_EXTENSION="go"
-PROCESS_COUNT=$(grep -m 1 "numGoroutines" $FILE.$FILE_EXTENSION | awk -F' = ' '{print $2}' | tr -d ';')
+PROCESS_COUNT=$(grep -m 1 "numGoroutines" $FILE.$FILE_EXTENSION | awk -F' := ' '{print $2}')
 
 # Start the process in the background
 $LANGUAGE build
