@@ -22,7 +22,7 @@ public class Threads {
         ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
 
         for (int i = 0; i < numThreads; i++) {
-            Future<?> future = executor.submit(VirtualThreads::performSimpleOperation);
+            Future<?> future = executor.submit(Threads::performSimpleOperation);
             futures.add(future);
         }
 
