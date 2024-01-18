@@ -9,7 +9,7 @@ async fn perform_simple_operation() {
 
 #[tokio::main]
 async fn main() {
-    let num_tasks = 1;
+    let num_tasks = 1000000;
     let mut tasks = Vec::with_capacity(num_tasks);
 
     for _ in 0..num_tasks {
